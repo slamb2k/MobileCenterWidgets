@@ -20,7 +20,7 @@
             total = 0;
 
             for (i = 0; i < response.values.length; i++) {  //loop through the array
-                total += +response.values[i].name / response.values.length;  //Do the math!
+                total += +response.values[i].name;  //Do the math!
             }
 
             document.getElementById('tileValue').innerHTML = total;
@@ -31,7 +31,7 @@
     <div class="widget" style="background-color: black;">
         <h2 class="title">Bonus Sales</h2>
         <div id="tileValue" class="big-count">0</div>
-        <div class="footer">Count</div>
+        <div class="footer">Total</div>
     </div>
 </body>
 </html>
