@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/vss/sdk-widgets.css" />
+    <link rel="stylesheet" type="text/css" href="css/vss/sdk-widgets-core.css" />
+    <link rel="stylesheet" type="text/css" href="css/vss/sdk-widgets-3rd-party-only.css" />
+    <link rel="stylesheet" type="text/css" href="css/vss/sdk-widget-configuration.css" />
+    
+    <link rel="stylesheet" type="text/css" href="css/widget.css" />
+    <link rel="stylesheet" type="text/css" href="css/config.css" />
+    <script>
+        function GetData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "https://api.mobile.azure.com/v0.1/apps/silamb/XamarinDevDaysTest/analytics/events/FastOrdering/properties/TimeTaken/counts?start=2017-07-01&count=10", false);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.setRequestHeader("X-API-Token", "2660596e57e013fa47a31f7258a7d5103656e2ef");
+            xhttp.send();
+
+            var response = JSON.parse(xhttp.responseText);
+            total = 0;
+
+            for (i = 0; i < response.values.length; i++) {  //loop through the array
+                total += +response.values[i].name / response.values.length;  //Do the math!
+            }
+
+            document.getElementById('tileValue').innerHTML = total.toFixed(3);
+        }
+    </script>
+</head>
+<body onload="GetData()">
+    <div class="widget" style="background-color: green;">
+        <h2 class="title">Fast Ordering</h2>
+        <div id="tileValue" class="big-count">4</div>
+        <div class="footer">Avg Response Time</div>
+    </div>
+</body>
+</html>
