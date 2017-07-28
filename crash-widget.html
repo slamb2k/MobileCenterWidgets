@@ -11,7 +11,7 @@
     <script>
         function GetData() {
             var xhttp = new XMLHttpRequest();
-            xhttp.open("GET", "https://api.mobile.azure.com/v0.1/apps/silamb/XamarinDevDaysTest/analytics/crash_counts?start=2017-07-01", false);
+            xhttp.open("GET", "https://api.mobile.azure.com/v0.1/apps/silamb/XamarinDevDays/analytics/crash_counts?start=2017-07-24", false);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.setRequestHeader("X-API-Token", "2660596e57e013fa47a31f7258a7d5103656e2ef");
             xhttp.send();
@@ -20,7 +20,7 @@
             total = 0;
 
             for (i = 0; i < response.crashes.length; i++) {  //loop through the array
-                total += +response.crashes[i].count / response.crashes.length;  //Do the math!
+                total += +response.crashes[i].count;  //Do the math!
             }
 
             document.getElementById('tileValue').innerHTML = total;
